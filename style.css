@@ -1,9 +1,41 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f8ff;
-  color: #333;
-}
-
-h2 {
-  color: #1b4a9b;
-}
+    .game-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 50vh;
+      flex-direction: column;
+    }
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 5px;
+      margin: 20px 0;
+    }
+    .cell {
+      width: 100px;
+      height: 100px;
+      border: 2px solid #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 48px;
+      cursor: pointer;
+      background-color: #f8f9fa;
+    }
+    .cell.x {
+      color: #0d6efd; /* Warna biru untuk X */
+    }
+    .cell.o {
+      color: #dc3545; /* Warna merah untuk O */
+    }
+    .cell:hover {
+      background-color: #e9ecef;
+    }
+    .game-info {
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+    .bg-primary {
+      background-color: #537D5D !important;
+    }
