@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game XOX (Tic Tac Toe)</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Tambahkan SweetAlert CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
   <style>
     .game-container {
       display: flex;
@@ -44,8 +46,7 @@
       margin-top: 20px;
       font-size: 1.2rem;
     }
-
-    .bg-primary{
+    .bg-primary {
       background-color: #537D5D !important;
     }
   </style>
@@ -93,6 +94,8 @@
     <p>© 2025 Game XOX (Tic Tac Toe)</p>
   </footer>
 
+  <!-- Tambahkan SweetAlert JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const board = document.getElementById('board');
@@ -155,15 +158,33 @@
         
         // Jika ada pemenang
         if (roundWon) {
-          document.getElementById('gameInfo').innerHTML = `Pemain <strong>${currentPlayer}</strong> menang!`;
           gameActive = false;
+          Swal.fire({
+            title: 'Selamat!',
+            text: `Pemain ${currentPlayer} menang!`,
+            icon: 'success',
+            confirmButtonText: 'Main Lagi'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              resetGame();
+            }
+          });
           return;
         }
         
         // Jika seri
         if (!gameState.includes('')) {
-          document.getElementById('gameInfo').innerHTML = 'Permainan berakhir seri!';
           gameActive = false;
+          Swal.fire({
+            title: 'Permainan Seri!',
+            text: 'Tidak ada pemenang dalam permainan ini.',
+            icon: 'info',
+            confirmButtonText: 'Main Lagi'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              resetGame();
+            }
+          });
           return;
         }
         
@@ -190,4 +211,4 @@
     });
   </script>
 </body>
-</html>
+</html> 
